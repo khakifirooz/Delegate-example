@@ -1,12 +1,9 @@
-﻿Delegate:
+﻿// Delegate:
 
-int[] Number = { 23, 40, 50, 55, 78, 88 };
+int[] number = { 23, 40, 50, 55, 78, 88 };
+MathDelegate del = IsEven;
 
-//MathDelegate del = IsEven;
-// Lambda expression :
-MathDelegate even = number => number % 2 == 0;
-
-var result = FilterArrey(Number, even);
+var result = FilterArrey(number, del);
 
 foreach (var item in result)
 {
@@ -14,8 +11,16 @@ foreach (var item in result)
 }
 Console.ReadKey();
 
+static bool IsEven(int number)
+{
+    return number % 2 == 0;
+}
+static bool IsOdd(int number)
+{
+    return number % 2 == 1;
+}
 
-static List<int> FilterArrey(int[] array, MathDelegate predicate)
+static List<int> FilterArrey(int[] array , MathDelegate predicate)
 {
     List<int> result = new List<int>();
     foreach (var item in array)
@@ -30,7 +35,6 @@ static List<int> FilterArrey(int[] array, MathDelegate predicate)
 
 //-------------------------
 // Generic Delegate:
-
 
 //public delegate T MyDelegate<T>(T p1, T p2);
 
