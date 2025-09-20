@@ -1,41 +1,17 @@
-﻿// Delegate:
+﻿
+Func<int, int, int> del = Max;
+Console.WriteLine($"Max is : {del(10,20)}");
 
-int[] number = { 23, 40, 50, 55, 78, 88 };
-MathDelegate del = IsEven;
+Func<string> del2 = Display;
+Console.WriteLine($"result is {del2()}");
 
-var result = FilterArrey(number, del);
-
-foreach (var item in result)
-{
-    Console.WriteLine(item);
-}
 Console.ReadKey();
-
-static bool IsEven(int number)
+static int Max(int n1, int n2)
 {
-    return number % 2 == 0;
-}
-static bool IsOdd(int number)
-{
-    return number % 2 == 1;
+    return Math.Max(n1, n2);
 }
 
-static List<int> FilterArrey(int[] array , MathDelegate predicate)
+static string Display()
 {
-    List<int> result = new List<int>();
-    foreach (var item in array)
-    {
-        if (predicate(item))
-        {
-            result.Add(item);
-        }
-    }
-    return result;
+    return "hello";
 }
-
-//-------------------------
-// Generic Delegate:
-
-//public delegate T MyDelegate<T>(T p1, T p2);
-
-public delegate bool MathDelegate(int number);
